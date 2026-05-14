@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Location Share</title>
+</head>
+<body>
+  <button onclick="getLocation()">Share Location</button>
+
+  <script>
+    function getLocation() {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+
+          alert(`Latitude: ${lat}, Longitude: ${lon}`);
+
+          // Send to your server here
+          // fetch('/save-location', { method: 'POST', body: JSON.stringify({lat, lon}) });
+        },
+        () => {
+          alert("Location permission denied");
+        }
+      );
+    }
+  </script>
+</body>
+</html>
